@@ -1,0 +1,54 @@
+# action.yml
+name: 'Run Lighthouse CI on Shopify theme'
+branding:
+  icon: shopping-bag
+  colour: green
+description: 'Run Lighthouse CI on Shopify themes directly from GitHub'
+inputs:
+  access_token:
+    description: 'Legacy custom app access token (for apps created before Jan 2026)'
+    # required: false because you can still authenticate with private
+    # app credentials, or with client_id/client_secret
+    required: false
+  client_id:
+    description: 'Client ID for Dev Dashboard app (use with client_secret instead of access_token)'
+    required: false
+  client_secret:
+    description: 'Client secret for Dev Dashboard app (use with client_id instead of access_token)'
+    required: false
+  store:
+    description: '<domain>.myshopify.com URL'
+    required: true
+  password:
+    description: 'Password-protected shop password'
+    required: false
+  product_handle:
+    description: 'Product handle for product page test (default: first product).'
+    required: false
+  collection_handle:
+    description: 'Collection handle for collection page test (default: first collection).'
+    required: false
+  theme_root:
+    description: 'The root folder for the theme files that will be uploaded (default: ".")'
+    required: false
+    default: '.'
+  pull_theme:
+    description: 'The ID or name of a theme from which the settings and JSON templates should be pulled. If provided, those settings will be pulled into the development theme.'
+    required: false
+  lhci_github_app_token:
+    description: 'Lighthouse CI GitHub app token'
+    required: false
+  lhci_github_token:
+    description: 'GitHub personal access token'
+    required: false
+  lhci_min_score_performance:
+    description: 'Minimum performance score'
+    required: false
+    default: 0.6
+  lhci_min_score_accessibility:
+    description: 'Minimum accessibility score'
+    required: false
+    default: 0.9
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

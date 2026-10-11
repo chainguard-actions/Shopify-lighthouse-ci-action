@@ -1,0 +1,1 @@
+# Shopify-lighthouse-ci-action
